@@ -1,7 +1,10 @@
+// main.dart
 import 'package:flutter/material.dart';
+import 'package:loja/models/auth.dart';
 import 'package:loja/models/cart.dart';
 import 'package:loja/models/order_list.dart';
 import 'package:loja/models/product_list.dart';
+import 'package:loja/pages/auth_page.dart';
 import 'package:loja/pages/cart_page.dart';
 import 'package:loja/pages/orders_page.dart';
 import 'package:loja/pages/product_detail_page.dart';
@@ -32,6 +35,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => OrderList(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => Auth(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -41,6 +47,7 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Lato'),
         //home: const ProductsOverviewPage(),
         routes: {
+          AppRoutes.auth: (ctx) => const AuthPage(),
           AppRoutes.home: (ctx) => const ProductsOverviewPage(),
           AppRoutes.productDetail: (ctx) => const ProductDetailPage(),
           AppRoutes.cart: (ctx) => const CartPage(),
